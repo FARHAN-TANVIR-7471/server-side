@@ -13,13 +13,30 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = DB::table('orders')
-            ->join('order_items', 'orders.id', '=', 'order_items.order_id')
-            ->select('users.*', 'order_items.*')
-            ->get();
-        return response()->json(array('orders'=>$orders);
+        $orders = Order::orderBy('updated_at', 'DESC')->with('orderitems')->get();
+        
+        // $orderids = array();
+        // foreach ($orders as $order)
+        // {
+        //     $orderid = $order->order_id;
+        //     array_push($orderids, $orderid );
+        // }
 
-       // return response()->json(['orders'.$orders]); 
+        // $uniqueorderids = array_unique($orderids);
+        // $uniqueorderids = array_diff_assoc($orderids, array_unique($orderids));
+
+        // $collection = collect([]);
+        // foreach($uniqueorderids as $uniqueorderid)
+        // {
+        //     $order = Order::where('id', $uniqueorderid)->orderBy('updated_at', 'DESC')->get();
+        //     $collection->push($order);
+        // }
+
+        // return $orders;
+        return response()->json([
+            'success' => true,
+            'orders' => $orders
+        ]);
     }
 
 

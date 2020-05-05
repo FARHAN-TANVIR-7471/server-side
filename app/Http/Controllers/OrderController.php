@@ -9,6 +9,20 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+
+
+    public function index()
+    {
+        $orders = DB::table('orders')
+            ->join('order_items', 'orders.id', '=', 'order_items.order_id')
+            ->select('users.*', 'order_items.*')
+            ->get();
+        return response()->json(array('orders'=>$orders);
+
+       // return response()->json(['orders'.$orders]); 
+    }
+
+
     public function store(Request $request)
     {
         $order = new Order();

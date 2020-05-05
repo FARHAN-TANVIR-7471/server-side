@@ -18,6 +18,7 @@ class CreateOrderItemsTable extends Migration
             $table->string('ip_address');
             $table->bigInteger('user_id')->nullable();
             $table->bigInteger('product_id');
+            $table->bigInteger('order_id');
             $table->integer('product_quantity');
             $table->float('total_amount');
             $table->timestamps();

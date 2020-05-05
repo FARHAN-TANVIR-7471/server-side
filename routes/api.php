@@ -17,6 +17,9 @@ Route::get('cart', 'CartController@index');
 Route::post('cart_item_delete', 'CartController@destroy');
 Route::post('cart_item_update', 'CartController@update');
 
+// order
+Route::post('order', 'OrderController@store');
+
 Route::group(['prefix'=>'products'], function(){
 	Route::apiResource('/{product}/reviews','ReviewController');
 });

@@ -17,7 +17,6 @@ Route::get('/', function () {
 });
 
 
-
 Route::get('/admin/login', function () {
     return view('admin.login');
 });
@@ -28,15 +27,15 @@ Route::get('/admin/password', function () {
     return view('admin.password');
 });
 
-Auth::routes();
+/*Auth::routes();
 
 Route::group(['middleware' => ['auth', 'admin']], function(){
 	Route::get('/dashboard', function () {
     	return view('admin.index');
 	});
 
-	/*product type insert*/
+	//product type insert
 	Route::post('/productinsert','AdminController@productinsert');
-});
+});*/
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -11,7 +11,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('/products','ProductController'); 
 
-
 // cart
 Route::post('cart', 'CartController@store');
 Route::get('cart', 'CartController@index');
@@ -25,3 +24,5 @@ Route::get('order', 'OrderController@index');
 Route::group(['prefix'=>'products'], function(){
 	Route::apiResource('/{product}/reviews','ReviewController');
 });
+
+Route::post('login', 'loginController@login');

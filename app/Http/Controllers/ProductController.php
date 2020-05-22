@@ -8,7 +8,6 @@ use \Illuminate\Http\Response;
 use App\Http\Resources\Product\ProductResource;
 use App\Http\Resources\Product\ProductCollection;
 
-
 use Illuminate\Support\Facades\Auth;
 
 use App\Exceptions\ProductNotBelongsToUser;
@@ -31,7 +30,7 @@ class ProductController extends Controller
     public function index()
     {
        //return Product::all();
-        /*return ProductResource::collection( Product::all());*/
+        //return ProductResource::collection( Product::all());
 
         return ProductCollection::collection(Product::orderBy('updated_at', 'desc')->get());
     }

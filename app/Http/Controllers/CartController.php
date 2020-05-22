@@ -15,9 +15,7 @@ class CartController extends Controller
         $carts = Cart::where('ip_address', request()->ip())->with('product')->get();
 
         $total = 0;
-        /*foreach($carts as $cart){
-            $total += floor($cart->product_quantity * $cart->product->price - (100 * $cart->product->discount/$cart->product->price));
-        }*/
+        
         foreach($carts as $cart){
             $total += floor($cart->product_quantity *( $cart->product->price - ($cart->product->price/100 * $cart->product->discount)));
         }

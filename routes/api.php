@@ -9,7 +9,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('/products','ProductController'); 
+Route::apiResource('/products','ProductController');
+Route::post('/productadd','ProductController@store'); 
 
 // cart
 Route::post('cart', 'CartController@store');
@@ -26,3 +27,8 @@ Route::group(['prefix'=>'products'], function(){
 });
 
 Route::post('login', 'loginController@login');
+
+
+/*Contruct*/
+Route::post('/contructinsert', 'ContactController@store');
+Route::get('/contruct', 'ContactController@index');

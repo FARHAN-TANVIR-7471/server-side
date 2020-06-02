@@ -14,7 +14,6 @@ class ContactController extends Controller
      */
     public function index()
     {
-        
         $contact = Contact::orderBy('updated_at', 'DESC')->get();
         return response()->json(['data'=>$contact],200);
     }

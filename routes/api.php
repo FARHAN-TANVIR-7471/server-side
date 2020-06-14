@@ -26,7 +26,11 @@ Route::group(['prefix'=>'products'], function(){
 	Route::apiResource('/{product}/reviews','ReviewController');
 });
 
+//Route::post('login', 'loginController@login');
 Route::post('login', 'loginController@login');
+
+Route::post('loginAdmin', 'loginController@loginAdmin');
+Route::post('/usersignin', 'loginController@usersignin');
 
 
 /*Contruct*/

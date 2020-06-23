@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Cart;
@@ -9,11 +8,9 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-
     public function index()
     {
         $carts = Cart::where('ip_address', request()->ip())->with('product')->get();
-
         $total = 0;
         
         foreach($carts as $cart){
@@ -43,7 +40,6 @@ class CartController extends Controller
             $cart->save();
         }
         return $cart;
-        
     }
 
     public function update(Request $request)

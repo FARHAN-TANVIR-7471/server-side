@@ -31,6 +31,10 @@ Route::post('login', 'loginController@login');
 
 Route::post('loginAdmin', 'loginController@loginAdmin');
 Route::post('/usersignin', 'loginController@usersignin');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 60fba2493ffb2d4255179cead78fe1c9391e5b54
 
 /*Contruct*/
 Route::post('/contructinsert', 'ContactController@store');

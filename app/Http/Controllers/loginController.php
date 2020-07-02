@@ -18,6 +18,9 @@ class loginController extends Controller
 
 	    $user = DB::table('users')->where('email', '=', $email)->first();
 	    $password = DB::table('users')->where('email', $email)->value('password');
+	    //$userid = DB::table('users')->where('email', $email)->value('id');
+	    //$order = DB::table('users')->where('user_id', $userid)->value('order');
+	    
 
 	    if (!$user) {
 	    	session(['success' => 'false']);
@@ -26,7 +29,8 @@ class loginController extends Controller
 	    if (!Hash::check($passworda, $password)) {
 	       	return response()->json(['success'=>false, 'message' => 'Login Fail, pls check password'],500);
 	    }
-	    	return response()->json(['success'=>true,'message'=>'success'],200);//, 'data' => $user
+	    	//$req->session()->put('data');
+	    	return response()->json(['success'=>true,'message'=>'success', 'data' => $user],200);//, 'data' => $user
 	}
 	
 	public function loginAdmin(Request $request) {

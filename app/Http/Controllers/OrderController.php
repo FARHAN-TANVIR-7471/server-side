@@ -15,7 +15,6 @@ class OrderController extends Controller
         $orders = Order::orderBy('updated_at', 'DESC')->with('orderitems')->get();
 
         return response()->json([
-            //'success' => true,
             'orders' => $orders
         ]);
     }
@@ -31,7 +30,7 @@ class OrderController extends Controller
         $order->address = $request->address;
         $order->save();
 
-        $carts = Cart::where('ip_address', $request->ip_address)->get();
+        $carts = Cart::where('user_id', $request->user_id)->get();
         foreach ($carts as $cart)
         {
             $ordeitem = new OrderItem();
@@ -44,7 +43,7 @@ class OrderController extends Controller
             $ordeitem->save();
         }
 
-        $carts = Cart::where('ip_address', $request->ip_address)->get();
+        $carts = Cart::where('user_id', $request->user_id)->get();
         foreach ($carts as $cart)
         {
             $cart->delete();
